@@ -10,6 +10,10 @@ test("Create a ship", () => {
   expect(testShip.length).toBe(4);
 });
 
+test("Create hits array", () => {
+  expect(testShip.hits).toEqual([false, false, false, false]);
+});
+
 test("Hit a square", () => {
   testShip.hit(1);
   expect(testShip.hits).toEqual([true, false, false, false]);
