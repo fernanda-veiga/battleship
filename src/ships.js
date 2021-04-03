@@ -1,6 +1,6 @@
 function ship(length) {
   const squares = [1, 2, 3, 4];
-  let hits = [false, false, false, false];
+  let hits = new Array(length).fill(false);
 
   function hit(number) {
     if (squares.includes(number)) {
