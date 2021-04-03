@@ -1,5 +1,4 @@
-function ship() {
-  const length = 4;
+function ship(length) {
   const squares = [1, 2, 3, 4];
   let hits = [false, false, false, false];
 
