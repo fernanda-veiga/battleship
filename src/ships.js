@@ -2,25 +2,25 @@ function ship(length, firstSquare, direction = "horizontal") {
   let squares = [];
   for (let i = 0; i < length; i++) {
     if (direction === "horizontal") {
-      squares.push(firstSquare + i);
+      squares.push({ x: firstSquare.x + i, y: firstSquare.y, hit: false });
     } else {
-      squares.push(firstSquare + 10 * i);
+      squares.push({ x: firstSquare.x, y: firstSquare.y + i, hit: false });
     }
   }
 
-  let hits = new Array(length).fill(false);
-
-  function hit(number) {
-    if (squares.includes(number)) {
-      hits[squares.indexOf(number)] = true;
+  function hit(coordinate) {
+    for (let i = 0; i < length; i++) {
+      if (squares[i].x === coordinate.x && squares[i].y === coordinate.y) {
+        squares[i].hit = true;
+      }
     }
   }
 
   function isSunk() {
-    return hits.every((hit) => hit === true);
+    return squares.every((square) => square.hit === true);
   }
 
-  return { length, squares, hits, hit, isSunk };
+  return { length, squares, hit, isSunk };
 }
 
 export default ship;
