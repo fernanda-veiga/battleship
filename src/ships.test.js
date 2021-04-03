@@ -3,7 +3,7 @@ import ship from "./ships";
 let testShip;
 
 beforeEach(() => {
-  return (testShip = ship(4, 1));
+  return (testShip = ship(4, 0));
 });
 
 test("Create a ship", () => {
@@ -11,12 +11,12 @@ test("Create a ship", () => {
 });
 
 test("Horizontal ship squares", () => {
-  expect(testShip.squares).toEqual([1, 2, 3, 4]);
+  expect(testShip.squares).toEqual([0, 1, 2, 3]);
 });
 
 test("Vertical ship squares", () => {
-  testShip = ship(4, 1, "vertical");
-  expect(testShip.squares).toEqual([1, 11, 21, 31]);
+  testShip = ship(4, 0, "vertical");
+  expect(testShip.squares).toEqual([0, 10, 20, 30]);
 });
 
 test("Create hits array", () => {
@@ -24,13 +24,13 @@ test("Create hits array", () => {
 });
 
 test("Hit a square", () => {
-  testShip.hit(1);
+  testShip.hit(0);
   expect(testShip.hits).toEqual([true, false, false, false]);
 });
 
 test("Hit a square again", () => {
-  testShip.hit(1);
-  testShip.hit(4);
+  testShip.hit(0);
+  testShip.hit(3);
   expect(testShip.hits).toEqual([true, false, false, true]);
 });
 
@@ -45,9 +45,9 @@ test("Not sunk ship", () => {
 });
 
 test("Sunk ship", () => {
+  testShip.hit(0);
   testShip.hit(1);
   testShip.hit(2);
   testShip.hit(3);
-  testShip.hit(4);
   expect(testShip.isSunk()).toBe(true);
 });
