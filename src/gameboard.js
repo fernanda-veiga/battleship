@@ -4,7 +4,7 @@ function gameboard() {
   //const board = new Array(100).fill(false);
   let board = [];
 
-  function isShipValid(ship) {
+  function validateShip(ship) {
     const lastSquare = ship.squares[ship.length - 1];
 
     if (lastSquare.x > 9 || lastSquare.y > 9) {
