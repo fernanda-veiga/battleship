@@ -1,5 +1,13 @@
-function ship(length) {
-  const squares = [1, 2, 3, 4];
+function ship(length, firstSquare, direction = "horizontal") {
+  let squares = [];
+  for (let i = 0; i < length; i++) {
+    if (direction === "horizontal") {
+      squares.push(firstSquare + i);
+    } else {
+      squares.push(firstSquare + 10 * i);
+    }
+  }
+
   let hits = new Array(length).fill(false);
 
   function hit(number) {
