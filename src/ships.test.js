@@ -3,7 +3,11 @@ import ship from "./ships";
 let testShip;
 
 beforeEach(() => {
-  return (testShip = ship());
+  return (testShip = ship(4));
+});
+
+test("Create a ship", () => {
+  expect(testShip.length).toBe(4);
 });
 
 test("Hit a square", () => {
@@ -23,8 +27,6 @@ test("Miss a square", () => {
 });
 
 test("Not sunk ship", () => {
-  testShip.hit(1);
-  testShip.hit(2);
   testShip.hit(3);
   expect(testShip.isSunk()).toBe(false);
 });
