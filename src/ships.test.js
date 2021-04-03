@@ -3,7 +3,7 @@ import ship from "./ships";
 let testShip;
 
 beforeEach(() => {
-  return (testShip = ship(4, 0));
+  return (testShip = ship(4, { x: 0, y: 0 }));
 });
 
 test("Create a ship", () => {
@@ -11,43 +11,64 @@ test("Create a ship", () => {
 });
 
 test("Horizontal ship squares", () => {
-  expect(testShip.squares).toEqual([0, 1, 2, 3]);
+  expect(testShip.squares).toEqual([
+    { x: 0, y: 0, hit: false },
+    { x: 1, y: 0, hit: false },
+    { x: 2, y: 0, hit: false },
+    { x: 3, y: 0, hit: false },
+  ]);
 });
 
 test("Vertical ship squares", () => {
-  testShip = ship(4, 0, "vertical");
-  expect(testShip.squares).toEqual([0, 10, 20, 30]);
-});
-
-test("Create hits array", () => {
-  expect(testShip.hits).toEqual([false, false, false, false]);
+  testShip = ship(4, { x: 0, y: 0 }, "vertical");
+  expect(testShip.squares).toEqual([
+    { x: 0, y: 0, hit: false },
+    { x: 0, y: 1, hit: false },
+    { x: 0, y: 2, hit: false },
+    { x: 0, y: 3, hit: false },
+  ]);
 });
 
 test("Hit a square", () => {
-  testShip.hit(0);
-  expect(testShip.hits).toEqual([true, false, false, false]);
+  testShip.hit({ x: 0, y: 0 });
+  expect(testShip.squares).toEqual([
+    { x: 0, y: 0, hit: true },
+    { x: 1, y: 0, hit: false },
+    { x: 2, y: 0, hit: false },
+    { x: 3, y: 0, hit: false },
+  ]);
 });
 
 test("Hit a square again", () => {
-  testShip.hit(0);
-  testShip.hit(3);
-  expect(testShip.hits).toEqual([true, false, false, true]);
+  testShip.hit({ x: 0, y: 0 });
+  testShip.hit({ x: 3, y: 0 });
+  expect(testShip.squares).toEqual([
+    { x: 0, y: 0, hit: true },
+    { x: 1, y: 0, hit: false },
+    { x: 2, y: 0, hit: false },
+    { x: 3, y: 0, hit: true },
+  ]);
 });
 
 test("Miss a square", () => {
-  testShip.hit(10);
-  expect(testShip.hits).toEqual([false, false, false, false]);
+  testShip.hit({ x: 10, y: 0 });
+  expect(testShip.squares).toEqual([
+    { x: 0, y: 0, hit: false },
+    { x: 1, y: 0, hit: false },
+    { x: 2, y: 0, hit: false },
+    { x: 3, y: 0, hit: false },
+  ]);
 });
 
 test("Not sunk ship", () => {
-  testShip.hit(3);
+  testShip.hit({ x: 3, y: 0 });
   expect(testShip.isSunk()).toBe(false);
 });
 
 test("Sunk ship", () => {
-  testShip.hit(0);
-  testShip.hit(1);
-  testShip.hit(2);
-  testShip.hit(3);
+  testShip.hit({ x: 0, y: 0 });
+  testShip.hit({ x: 1, y: 0 });
+  testShip.hit({ x: 2, y: 0 });
+  testShip.hit({ x: 3, y: 0 });
   expect(testShip.isSunk()).toBe(true);
 });
