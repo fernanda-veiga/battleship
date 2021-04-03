@@ -3,11 +3,20 @@ import ship from "./ships";
 let testShip;
 
 beforeEach(() => {
-  return (testShip = ship(4));
+  return (testShip = ship(4, 1));
 });
 
 test("Create a ship", () => {
   expect(testShip.length).toBe(4);
+});
+
+test("Horizontal ship squares", () => {
+  expect(testShip.squares).toEqual([1, 2, 3, 4]);
+});
+
+test("Vertical ship squares", () => {
+  testShip = ship(4, 1, "vertical");
+  expect(testShip.squares).toEqual([1, 11, 21, 31]);
 });
 
 test("Create hits array", () => {
