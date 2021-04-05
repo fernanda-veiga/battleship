@@ -1,36 +1,30 @@
 import React from "react";
 import "../styles/Grid.css";
 
-function Grid() {
-  //const gridLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-  //const gridNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+function Grid(props) {
+  const gridX = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  const gridY = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-  const gridNumbers = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90];
-  const gridLetters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let idWithShip = [];
 
-  /*return (
-    <div className="grid">
-      {gridNumbers.map((number) => {
-        return gridLetters.map((letter) => {
-          return (
-            <div
-              key={`${letter}${number}`}
-              id={`${letter}${number}`}
-            >{`${letter}${number}`}</div>
-          );
-        });
-      })}
-    </div>
-  );*/
+  console.log(props.ships);
+
+  props.ships.forEach((ship) => {
+    ship.squares.forEach((square) => {
+      idWithShip.push(`${square.x}${square.y}`);
+    });
+  });
 
   return (
     <div className="grid">
-      {gridNumbers.map((number) => {
-        return gridLetters.map((letter) => {
-          return (
-            <div key={`${number + letter}`} id={`${number + letter}`}>{`${
-              number + letter
+      {gridX.map((x) => {
+        return gridY.map((y) => {
+          return idWithShip.includes(x + y) ? (
+            <div key={`${x + y}`} id={`${x + y}`} className="ship">{`${
+              x + y
             }`}</div>
+          ) : (
+            <div key={`${x + y}`} id={`${x + y}`}>{`${x + y}`}</div>
           );
         });
       })}
