@@ -8,7 +8,6 @@ function generateValidSquares(length, ships, direction) {
       const currentSquare = { x, y };
       const currentShip = ship(length, currentSquare, direction);
 
-      //Validations
       if (isShipInvalid(currentShip) === true) continue;
       if (isShipOverlapping(currentShip.squares, ships) === true) continue;
       if (isShipAdjacent(currentShip, ships) === true) continue;
@@ -46,18 +45,21 @@ function isShipOverlapping(squares, ships) {
 
 function isShipAdjacent(ship, ships) {
   function generateAdjacentSquares(square) {
-    let adjacentSquares = [];
-    for (let i = -1; i <= 1; i++) {
-      for (let j = -1; j <= 1; j++) {
-        adjacentSquares.push({ x: square.x + i, y: square.y + j });
-      }
-    }
-    return adjacentSquares;
+    return [
+      { x: square.x, y: square.y - 1 },
+      { x: square.x, y: square.y + 1 },
+      { x: square.x - 1, y: square.y },
+      { x: square.x + 1, y: square.y },
+      { x: square.x - 1, y: square.y - 1 },
+      { x: square.x - 1, y: square.y + 1 },
+      { x: square.x + 1, y: square.y - 1 },
+      { x: square.x + 1, y: square.y + 1 },
+    ];
   }
 
   for (let i = 0; i < ship.squares.length; i++) {
     const adjacentSquares = generateAdjacentSquares(ship.squares[i]);
-    return isShipOverlapping(adjacentSquares, ships);
+    if (isShipOverlapping(adjacentSquares, ships)) return true;
   }
   return false;
 }
