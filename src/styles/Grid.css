@@ -7,3 +7,7 @@
 .grid div {
   border: 2px solid black;
 }
+
+.ship {
+  background-color: blue;
+}
