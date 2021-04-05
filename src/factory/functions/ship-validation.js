@@ -46,16 +46,13 @@ function isShipOverlapping(squares, ships) {
 
 function isShipAdjacent(ship, ships) {
   function generateAdjacentSquares(square) {
-    return [
-      { x: square.x - 1, y: square.y },
-      { x: square.x + 1, y: square.y },
-      { x: square.x, y: square.y - 1 },
-      { x: square.x, y: square.y + 1 },
-      { x: square.x - 1, y: square.y - 1 },
-      { x: square.x - 1, y: square.y + 1 },
-      { x: square.x + 1, y: square.y - 1 },
-      { x: square.x + 1, y: square.y + 1 },
-    ];
+    let adjacentSquares = [];
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        adjacentSquares.push({ x: square.x + i, y: square.y + j });
+      }
+    }
+    return adjacentSquares;
   }
 
   for (let i = 0; i < ship.squares.length; i++) {
