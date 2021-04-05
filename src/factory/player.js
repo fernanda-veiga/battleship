@@ -12,14 +12,11 @@ function player(turn) {
 
   function play(playedSquare) {
     for (let i = 0; i < availablePlays.length; i++) {
-      console.log(availablePlays[i]);
-      console.log(i);
       if (
         playedSquare.x === availablePlays[i].x &&
         playedSquare.y === availablePlays[i].y
       ) {
         availablePlays.splice(i, 1);
-        console.log(availablePlays);
         return;
       }
     }
