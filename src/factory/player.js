@@ -1,6 +1,6 @@
 import gameboard from "./gameboard";
 
-function player(turn) {
+function player(name) {
   let board = gameboard().ships;
   let availablePlays = [];
 
@@ -10,7 +10,7 @@ function player(turn) {
     }
   }
 
-  function play(playedSquare) {
+  function removeAvailablePlay(playedSquare) {
     for (let i = 0; i < availablePlays.length; i++) {
       if (
         playedSquare.x === availablePlays[i].x &&
@@ -22,7 +22,42 @@ function player(turn) {
     }
   }
 
-  return { board, turn, availablePlays, play };
+  function sunkAllShips() {
+    if (board.every((ship) => ship.isSunk() === true)) {
+      return true;
+    }
+  }
+
+  function getHit(playedSquare) {
+    const playedDiv = document.querySelector(
+      `#${name}-${playedSquare.x}${playedSquare.y}`
+    );
+    playedDiv.classList.add("hit");
+
+    if (playedDiv.classList[0] === "ship") {
+      board.forEach((ship) => {
+        ship.hit(playedSquare);
+
+        if (ship.isSunk()) {
+          ship.squares.forEach((square) => {
+            document
+              .querySelector(`#${name}-${square.x}${square.y}`)
+              .classList.add("sunk");
+          });
+        }
+      });
+    }
+  }
+
+  return {
+    name,
+    board,
+    playedSquare: {},
+    availablePlays,
+    getHit,
+    removeAvailablePlay,
+    sunkAllShips,
+  };
 }
 
 export default player;
