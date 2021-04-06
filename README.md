@@ -15,7 +15,7 @@ The user can play Battleship against the Computer. The user and the computer wil
 - [React](https://reactjs.org/)
 - [Webpack](https://webpack.js.org/)
 - [Babel](https://babeljs.io/)
-- [Jest] (https://jestjs.io/)
+- [Jest](https://jestjs.io/)
 - JavaScript, CSS and HTML
 
 ## Demo
