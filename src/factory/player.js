@@ -27,6 +27,7 @@ function player(name) {
       });
     });
   }
+  removeClassFromShips();
   addClassToShips();
 
   function randomizeBoard() {
