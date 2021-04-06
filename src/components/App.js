@@ -7,8 +7,17 @@ import "../styles/App.css";
 function App() {
   useEffect(() => {
     const newGame = game();
+    console.log(newGame);
+
     const randomizeBtn = document.querySelector(".randomize-btn");
     randomizeBtn.addEventListener("click", newGame.player1.randomizeBoard);
+
+    const startGameBtn = document.querySelector(".start-btn");
+    startGameBtn.addEventListener("click", () => {
+      newGame.addEventToDivs(true);
+      startGameBtn.disabled = true;
+      randomizeBtn.disabled = true;
+    });
   }, []);
 
   return (
@@ -21,12 +30,14 @@ function App() {
         </div>
         <div className="info-container">
           <div className="info-display"></div>
-          <button type="button" className="randomize-btn">
-            Randomize Grid
-          </button>
-          <button type="button" className="start-btn">
-            Start Game
-          </button>
+          <div className="button-container">
+            <button type="button" className="randomize-btn">
+              Randomize Grid
+            </button>
+            <button type="button" className="start-btn">
+              Start Game
+            </button>
+          </div>
         </div>
       </div>
     </div>
