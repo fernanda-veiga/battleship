@@ -10,6 +10,31 @@ function player(name) {
     }
   }
 
+  function removeClassFromShips() {
+    const grid = document.querySelector(`.${name}`);
+    const gridShips = grid.querySelectorAll(".ship");
+    gridShips.forEach((ship) => {
+      ship.classList.remove("ship");
+    });
+  }
+
+  function addClassToShips() {
+    board.forEach((ship) => {
+      ship.squares.forEach((square) => {
+        document
+          .querySelector(`#${name}-${square.x}${square.y}`)
+          .classList.add("ship");
+      });
+    });
+  }
+  addClassToShips();
+
+  function randomizeBoard() {
+    removeClassFromShips();
+    board = gameboard().ships;
+    addClassToShips();
+  }
+
   function removeAvailablePlay(playedSquare) {
     for (let i = 0; i < availablePlays.length; i++) {
       if (
@@ -57,6 +82,7 @@ function player(name) {
     getHit,
     removeAvailablePlay,
     sunkAllShips,
+    randomizeBoard,
   };
 }
 
