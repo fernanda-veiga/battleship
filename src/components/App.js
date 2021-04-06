@@ -20,8 +20,12 @@ function App() {
           <Grid player="player2" description="Opponent's grid" />
         </div>
         <div className="info-container">
+          <div className="info-display"></div>
           <button type="button" className="randomize-btn">
-            Randomize grid
+            Randomize Grid
+          </button>
+          <button type="button" className="start-btn">
+            Start Game
           </button>
         </div>
       </div>
