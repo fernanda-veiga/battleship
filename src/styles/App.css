@@ -4,7 +4,37 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #121212;
+}
+
 .App {
+  padding: 20px;
   display: flex;
-  gap: 50px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container {
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-container {
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  gap: 20px;
+}
+
+.info-container {
+  background-color: bisque;
+  width: 100%;
+  max-width: 940px;
+  min-width: 460px;
 }
