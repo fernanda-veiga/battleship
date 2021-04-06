@@ -1,13 +1,81 @@
-.grid {
+.Grid-container {
   display: grid;
-  grid-template-columns: repeat(10, 50px);
-  grid-template-rows: repeat(10, 50px);
+  grid-template-columns: 40px, 400px;
+  grid-template-rows: 40px 400px 40px;
 }
 
-.grid div {
-  border: 2px solid black;
+.Grid-coord-top {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  display: grid;
+  grid-template-columns: repeat(11, 40px);
 }
 
-.ship {
-  background-color: blue;
+.Grid-coord-left {
+  width: 40px;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-rows: repeat(10, 40px);
+}
+
+.Grid-coord-top > div,
+.Grid-coord-left > div {
+  font-family: "Lato", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Grid {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(10, 40px);
+}
+
+.Grid div {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.Grid.player2 div:hover {
+  background-color: rgba(245, 192, 192, 0.5);
+}
+
+.Grid.player1 .ship {
+  background-color: rgb(159, 216, 223);
+}
+
+.Grid .hit {
+  color: black;
+  font-family: "Lato", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Grid .hit::before {
+  font-size: 1.5em;
+  content: "•";
+}
+
+.Grid .hit.ship {
+  color: rgb(255, 113, 113);
+}
+
+.Grid .hit.ship.sunk {
+  background-color: rgba(255, 113, 113, 0.5);
+}
+
+.Grid-description {
+  font-family: "Lato", sans-serif;
+  grid-column: 1/3;
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
