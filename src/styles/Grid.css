@@ -89,3 +89,33 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 500px) {
+  .Grid-container {
+    grid-template-columns: calc(100vw - 40px);
+    grid-template-rows: calc(100vw - 40px) 40px;
+    gap: 1vw;
+  }
+
+  .Grid-coord-top {
+    display: none;
+  }
+
+  .Grid-coord-left {
+    display: none;
+  }
+
+  .Grid {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    grid-template-columns: repeat(10, calc((91vw - 40px) / 10));
+    grid-template-rows: repeat(10, calc((91vw - 40px) / 10));
+    gap: 1vw;
+  }
+
+  .Grid-description {
+    background-color: aqua;
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+}

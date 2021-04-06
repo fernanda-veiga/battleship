@@ -34,14 +34,17 @@
 .info-container {
   width: 100%;
   max-width: 940px;
-  min-width: 460px;
+  min-width: 240px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .info-display {
-  min-height: 55px;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /*border: 2px solid rgba(255, 255, 255, 0.8);*/
   border: 2px solid black;
   border-radius: 8px;
@@ -75,4 +78,15 @@
   background-color: rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.4);
   border: 2px solid rgba(0, 0, 0, 0.4);
+  cursor: default;
+}
+
+@media (max-width: 980px) {
+  .info-display {
+    min-height: 110px;
+  }
+
+  .info-container {
+    max-width: 460px;
+  }
 }
