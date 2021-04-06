@@ -47,18 +47,6 @@ function game() {
     });
   });
 
-  function addClassToShips(player) {
-    player.board.forEach((ship) => {
-      ship.squares.forEach((square) => {
-        document
-          .querySelector(`#${player.name}-${square.x}${square.y}`)
-          .classList.add("ship");
-      });
-    });
-  }
-  addClassToShips(player1);
-  addClassToShips(player2);
-
   return { player1, player2 };
 }
 
