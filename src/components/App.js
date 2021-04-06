@@ -37,6 +37,9 @@ function App() {
             <button type="button" className="start-btn">
               Start Game
             </button>
+            <button type="button" disabled={true} className="play-again-btn">
+              Play Again
+            </button>
           </div>
         </div>
       </div>
