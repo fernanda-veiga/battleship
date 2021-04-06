@@ -7,7 +7,6 @@ function game() {
   const player2Grid = document.querySelector(".player2");
   const player2Divs = player2Grid.querySelectorAll("div");
 
-  //let gameStarted = false;
   function addEventToDivs(gameStarted) {
     player2Divs.forEach((div) => {
       div.addEventListener("click", function gameRound() {
@@ -57,7 +56,6 @@ function game() {
             window.location.reload();
             return false;
           });
-
           return;
         }
 
@@ -81,7 +79,6 @@ function game() {
     const playedDiv = document.querySelector(
       `#${player}-${playedSquare.x}${playedSquare.y}`
     );
-    console.log(playedDiv);
 
     if (player === player2.name) {
       if (playedDiv.classList.contains("sunk"))
@@ -97,7 +94,7 @@ function game() {
     return "Your opponent missed.";
   }
 
-  return { player1, player2, /*gameStarted,*/ addEventToDivs };
+  return { player1, player2, addEventToDivs };
 }
 
 export default game;

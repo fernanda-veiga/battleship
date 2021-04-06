@@ -7,7 +7,6 @@ import "../styles/App.css";
 function App() {
   useEffect(() => {
     const newGame = game();
-    console.log(newGame);
 
     const randomizeBtn = document.querySelector(".randomize-btn");
     randomizeBtn.addEventListener("click", newGame.player1.randomizeBoard);
