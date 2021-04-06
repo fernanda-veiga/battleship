@@ -31,6 +31,12 @@ function game() {
         if (player2.sunkAllShips()) {
           div.removeEventListener("click", gameRound);
           infoDisplay.textContent = addInfoToDisplay(player2.name);
+          const playAgainBtn = document.querySelector(".play-again-btn");
+          playAgainBtn.disabled = false;
+          playAgainBtn.addEventListener("click", () => {
+            window.location.reload();
+            return false;
+          });
           return;
         }
 
@@ -45,6 +51,13 @@ function game() {
         if (player1.sunkAllShips()) {
           div.removeEventListener("click", gameRound);
           infoDisplay.textContent = addInfoToDisplay(player1.name);
+          const playAgainBtn = document.querySelector(".play-again-btn");
+          playAgainBtn.disabled = false;
+          playAgainBtn.addEventListener("click", () => {
+            window.location.reload();
+            return false;
+          });
+
           return;
         }
 
